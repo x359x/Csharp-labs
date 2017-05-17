@@ -1,0 +1,131 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using DLL;
+
+namespace lab2
+{
+    class Program
+    {
+        static bool color(int n, int m, int x1, int y1, int x2, int y2)
+        {
+            string[] koor = new string[2];
+            int k = 0;
+            for (int i = 1; i <= n; i++)
+            {
+                for (int j = 1; j <= m; j++)
+                {
+                    if (i == x1 && j == y1 || i == x2 && j == y2)
+                    {
+                        if (i % 2 != 0)
+                        {
+                            koor[k] = j % 2 != 0 ? "Черная" : "Белая";
+                        }
+                        else
+                        {
+                            koor[k] = j % 2 == 0 ? "Черная" : "Белая";
+                        }
+                        k++;
+                    }
+                }
+            }
+            return koor[0] == koor[1];
+        }
+        static void Main(string[] args)
+        {
+            complex a = new complex(1.5, 4),
+                    b = new complex(4, -5.4);
+
+            Console.Write($"a = {a.show()}\nb = {b.show()}\n");
+            
+            Console.Write($"a + b = {(a + b).show()}\n");
+
+            Console.WriteLine($"0 > null => {null == 0}\n5 > 3 => {5 > 3}\n1 << 2 => {1 << 2}");
+
+            //float x, y, min;
+            //Console.WriteLine($"x = {x = float.Parse(Console.ReadLine())}\ny = {y = float.Parse(Console.ReadLine())}");
+            //min = x < y ? x : y;
+            //Console.WriteLine($"min = {min}");
+
+            //string d = y >= -9 && y <= 9 && x > 0 && x <= 9 ? "входит в облась" : "не входит в облась";
+            //Console.WriteLine($"Точка с координатами {x}:{y} {d}");
+
+            int n, m, n1 = 2, m1 = 1, r;
+            string str = "";
+            n = 3; m = 3;
+            //Console.WriteLine("Введите разномерность:");
+            //n = int.Parse(Console.ReadLine());
+            //m = int.Parse(Console.ReadLine());
+
+            r = n != m ? (n * m) / 2 : n;
+            for (int i = 1; i <= n; i++)
+            {
+                for (int j = 1; j <= m; j++)
+                {
+                    if (i == n1 && j == m1)
+                    {
+                        if (i % 2 != 0)
+                        {
+                            str += j % 2 != 0 ? "Черная" : "Белая";
+                        }
+                        else
+                        {
+                            str += j % 2 == 0 ? "Черная" : "Белая";
+                        }
+                    }
+                }
+            }
+            Console.WriteLine($"Кол-во черных {r}\nЯчейка {n1}:{m1} - {str}");
+
+            int x1 = 1, x2 = 1, y1 = 1, y2 = 2;
+            Console.WriteLine($"x1:y1 = {x1}:{y1} ==== x2:y2 = {x2}:{y2}\tЦвета ячеек {color(n, m, x1, y1, x2, y2)}");
+
+            string date = "11.11.1992";
+            DateTime s = DateTime.Parse(date);
+            Console.WriteLine($"Дней с начала года = {s.Day + 30 * s.Month}\nПредыдущий день = {s.Day - 1}.{s.Month}.{s.Year}\nСлед. день = {s.Day + 1}.{s.Month}.{s.Year}");
+            Console.WriteLine($"Dней осталось до конца года = {(12 - s.Month) * 30 - s.Day}");
+
+            x1 = 4; x2 = 2;
+            str = x1 % x2 == 0 ? "частное от деления" : $"{x1} на {x2} нацело не делится";
+            Console.WriteLine($"Кубы чисул = {Math.Pow(x1, 3)}-{Math.Pow(x2, 3)}\n{x1}/{x2} = {str}");
+
+            m = 10; n = 4;
+            switch (n)
+            {
+                case 1: str = "пики"; break;
+                case 2: str = "трефы"; break;
+                case 3: str = "бубны"; break;
+                case 4: str = "червы";  break;
+                default: str = "Ошибка масти"; break;
+            }
+            Console.WriteLine($"{m} {str}");
+
+            x1 = 0; y1 = 100; x2 = 4;
+            str = "";
+            for (int i = x1; i <= y1; i += 2)
+            {
+                str += i % 10 == 4 ? $"{i},": "";
+            }
+            Console.WriteLine(str);
+
+            for (int i = 1; i <= 5; i++)
+            {
+                for (int j = i; j <= 5; j++)
+                {
+                    if (i % 2 != 0)
+                    {
+                        x1 = j % 2 != 0 ? 0 : 1;
+                    }
+                    else
+                    {
+                        x1 = j % 2 == 0 ? 1 : 0;
+                    }
+                    Console.Write($"{x1} ");
+                }
+                Console.Write($"\n");
+            }
+        }
+    }
+}
