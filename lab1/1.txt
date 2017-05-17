@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace lab1
+{
+    class Program
+    {
+        enum vars
+        {
+            min = 3,
+            max = 30,
+            avg = 17
+        }
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World!!!");
+
+            var i = 5.2;
+            var j = 5;
+            var s = "string";
+            var c = '1';
+            const int constant = 10;
+            Console.WriteLine("|{0}-{1}-{2}-{3}-{4}|", i.GetType(), j.GetType(), s.GetType(), c.GetType(), constant.GetType());
+
+            Console.Write("min = {2}\nmax = {0}\navg = {1}\n", (vars.max).ToString() == "max", (int)vars.avg, (double)vars.min);
+
+            double x = Math.E, cos = Math.Cos(1.3), proc = 0.1234;
+            Console.WriteLine("exp = " + x + "\ncos(1.3) = {0:num 0.00}", cos);
+            Console.WriteLine("% = {0, 5:p}", proc);
+
+            double zero = 0.0;
+            Console.Write("введите число = ");
+            Console.WriteLine("¬веденое число + 100 = {0}", double.Parse(Console.ReadLine()) + 100);
+            Console.Write("NaN = " + zero / zero);
+
+            Console.ReadKey();
+        }
+    }
+}
